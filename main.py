@@ -36,7 +36,7 @@ print()
 from typing import Optional      # Task 4
 
 def checked_access (L: list[list], idx:int) -> Optional[int]:
-   test = idx >= 0 and idx < len(L)  # What is the value of test on each cell? The value of test for first is False and the value of test in second is True. 
+   test = idx >= 0 and idx < len(L)  # What is the value of test on each cell? The value of test for first is False and the value of test in second is True.
    if test:                          # What is this check preventing? The check prevents an Index error so the program doesn't attempt to access an index that doesn't exist in the list.
       return L[idx]
    else:
@@ -61,3 +61,16 @@ first = length_sum(["this", "is", "the", "first", "call"])
 second = length_sum (["second call"])
 third = length_sum (["another", "call"])
 print ()
+
+
+def surprising(L: list[str], other: str) -> list[str]:
+   L.append(other.upper())
+   return L
+
+words = ["this", "is", "confusing", "code."]
+first = surprising(words, "Avoid")
+second = surprising(words, "such.")
+# What is the value of words at this point? The value of words at this point is ["this", "is", "confusing", "code." "Avoid", "such."]
+# What are the values of first and second at this point? The values of first and second is ["this", "is", "confusing", "code." "Avoid", "such."]
+# What happened? Both calls modified the same original list in place so every variable ended up at the same point
+print()
